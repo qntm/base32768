@@ -1,0 +1,26 @@
+{
+	"name": "base32768",
+	"version": "0.0.1",
+	"description": "Binary-to-text encoding highly optimised for UTF-16",
+	"homepage": "https://github.com/ferno/base32768",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/ferno/base32768.git"
+	},
+	"main": "index.js",
+	"keywords": [
+		"base64",
+		"base32768",
+		"encoding",
+		"unicode",
+		"text",
+		"decoding",
+		"efficiency"
+	],
+	"scripts": {
+		"test": "node test.js"
+	},
+	"dependencies": [],
+	"author": "ferno",
+	"license": "MIT"
+}
