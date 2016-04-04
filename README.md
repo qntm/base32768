@@ -5,7 +5,7 @@ Base32768 is a binary encoding optimised for UTF-16-encoded text. The efficiency
 | Encoding | Implementation | UTF-8 | UTF-16 | UTF-32 |
 | -------- | -------------- | ----- | ------ | ------ |
 | Hexadecimal | everywhere | 50% | 25% | 13% |
-| Base64 | everywhere | 75% | 37% | 19% |
+| Base64 | everywhere | 75% | 38% | 19% |
 | Base85 | everywhere | 80% | 40% | 20% |
 | Base65536 | [`base65536`](https://github.com/ferno/base65536) | 56% | 64% | 50% |
 | **Base32768** | **[`base32768`](https://github.com/ferno/base32768)** | **63%** | **94%** | **47%** |
