@@ -1,8 +1,8 @@
 # base32768
 
-Base32768 is a binary encoding optimised for UTF-16-encoded text. The efficiency chart speaks for itself.
+Base32768 is a binary encoding optimised for UTF-16-encoded text. This JavaScript module, `base32768`, is the first implementation of this encoding.
 
-Efficiency ratings are averaged over long inputs. Higher is better.
+The efficiency chart speaks for itself. Efficiency ratings are averaged over long inputs. Higher is better.
 
 <table>
 	<thead>
@@ -77,15 +77,23 @@ Efficiency ratings are averaged over long inputs. Higher is better.
 			<td style="text-align: right;">47%</td>
 		</tr>
 		<tr>
-			<td>Full Unicode</td>
+			<td rowspan="2">Full Unicode</td>
 			<td>Base65536</td>
 			<td><code><a href="https://github.com/ferno/base65536">base65536</a></code></td>
 			<td style="text-align: right;">56%</td>
 			<td style="text-align: right;">64%</td>
-			<td style="text-align: right;"><strong>50%</strong></td>
+			<td style="text-align: right;">50%</td>
+		</tr>
+		<tr>
+			<td>Base131072</td>
+			<td><code><a href="https://github.com/ferno/base131072">base131072</a></code> (prototype)</td>
+			<td style="text-align: right;">53%+</td>
+			<td style="text-align: right;">53%+</td>
+			<td style="text-align: right;"><strong>53%</strong></td>
 		</tr>
 	</tbody>
 </table>
+
 
 Base32768 uses only "safe" Unicode code points - no unassigned code points, no whitespace, no control characters, etc.. For details of how these code points were selected and why they are thought to be safe, see the sibling project [`base32768gen`](https://github.com/ferno/base32768gen).
 
