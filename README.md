@@ -111,7 +111,7 @@ var base32768 = require("base32768");
 var buf = new Buffer("d41d8cd98f00b204e9800998ecf842", "hex"); // 15 bytes
 
 var str = base32768.encode(buf); 
-console.log(str); // "迎裶垠⢀䳬Ɇ垙鸂", 8 code points
+console.log(str); // "遮視塀⤠䶌Ԇ堹麢", 8 code points
 
 var buf2 = base32768.decode(str);
 console.log(buf.equals(buf2)); // true
