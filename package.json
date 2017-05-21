@@ -1,11 +1,11 @@
 {
   "name": "base32768",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Binary-to-text encoding highly optimised for UTF-16",
-  "homepage": "https://github.com/ferno/base32768",
+  "homepage": "https://github.com/qntm/base32768",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ferno/base32768.git"
+    "url": "git://github.com/qntm/base32768.git"
   },
   "main": "index.js",
   "keywords": [
@@ -21,7 +21,7 @@
     "test": "node test/test.js"
   },
   "dependencies": [],
-  "author": "ferno",
+  "author": "qntm",
   "license": "MIT",
   "devDependencies": {
     "glob": "^7.1.1"
