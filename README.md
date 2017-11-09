@@ -95,7 +95,7 @@ The efficiency chart speaks for itself. Efficiency ratings are averaged over lon
 </table>
 
 
-Base32768 uses only "safe" Unicode code points - no unassigned code points, no whitespace, no control characters, etc.. For details of how these code points were selected and why they are thought to be safe, see the sibling project [`base32768gen`](https://github.com/ferno/base32768gen).
+Base32768 uses only ["safe" Unicode code points](https://qntm.org/safe) - no unassigned code points, no whitespace, no control characters, etc..
 
 ## Installation
 
