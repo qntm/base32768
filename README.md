@@ -121,13 +121,13 @@ console.log(buf.equals(buf2)); // true
 
 ### base32768.encode(buf)
 
-Encodes a [`Buffer`](https://nodejs.org/api/buffer.html#buffer_new_buffer_str_encoding) and returns a Base32768 `String`, suitable for passing safely through almost any "Unicode-clean" text-handling API. This string contains no special characters and is immune to Unicode normalization. Give or take some padding characters, the output string has 1 character per 15 bits of input.
+Encodes an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) and returns a Base32768 `String`, suitable for passing safely through almost any "Unicode-clean" text-handling API. This string contains no special characters and is immune to Unicode normalization. Give or take some padding characters, the output string has 1 character per 15 bits of input.
 
 All characters are chosen from the Basic Multilingual Plane. This means that when encoded as UTF-16, all characters occupy 16 bits. Thus, there are 16 bits of output UTF-16 text per 15 bits of input, an efficiency of 93.75%.
 
 ### base32768.decode(str)
 
-Decodes a Base32768 `String` and returns a `Buffer` containing the original binary data.
+Decodes a Base32768 `String` and returns an `ArrayBuffer` containing the original binary data.
 
 ## License
 
