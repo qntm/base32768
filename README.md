@@ -106,15 +106,15 @@ npm install base32768
 ## Usage
 
 ```js
-var base32768 = require("base32768");
+const base32768 = require("base32768")
 
-var buf = new Buffer("d41d8cd98f00b204e9800998ecf842", "hex"); // 15 bytes
+const uint8Array = new Uint8Array([104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100])
 
-var str = base32768.encode(buf); 
-console.log(str); // "遮視塀⤠䶌Ԇ堹麢", 8 code points
+const string = base32768.encode(uint8Array.buffer); 
+console.log(string); // 6 code points, '媒腻㐤┖ꈳ埳'
 
-var buf2 = base32768.decode(str);
-console.log(buf.equals(buf2)); // true
+const uint8Array2 = new Uint8Array(base32768.decode(string));
+console.log(uint8Array2); // [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 ```
 
 ## API
