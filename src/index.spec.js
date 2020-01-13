@@ -5,12 +5,12 @@
 import fs from 'fs'
 import glob from 'glob'
 
-import base32768 from '../src/index'
+import { encode, decode } from '../src/index'
 
 const forms = ['NFC', 'NFD', 'NFKC', 'NFKD']
 
-const expectArrayBuffersEqual = (expected, actual) => {
-  expect([...new Uint8Array(expected)]).toEqual([...new Uint8Array(actual)])
+const expectUint8ArraysEqual = (expected, actual) => {
+  expect([...expected]).toEqual([...actual])
 }
 
 describe('base32768', () => {
@@ -20,10 +20,10 @@ describe('base32768', () => {
     binFileNames.forEach(function (fileName) {
       const caseName = fileName.substring(0, fileName.length - '.bin'.length)
       it(caseName, () => {
-        const binary = new Uint8Array(fs.readFileSync(caseName + '.bin')).buffer
+        const uint8Array = new Uint8Array(fs.readFileSync(caseName + '.bin'))
         const text = fs.readFileSync(caseName + '.txt', 'utf8')
-        expect(base32768.encode(binary)).toBe(text)
-        expectArrayBuffersEqual(base32768.decode(text), binary)
+        expect(encode(uint8Array)).toBe(text)
+        expectUint8ArraysEqual(decode(text), uint8Array)
         forms.forEach(function (form) {
           expect(text.normalize(form)).toBe(text)
         })
@@ -38,7 +38,7 @@ describe('base32768', () => {
       const caseName = fileName.substring(0, fileName.length - '.txt'.length)
       it(caseName, () => {
         const text = fs.readFileSync(caseName + '.txt', 'utf8')
-        expect(() => base32768.decode(text)).toThrow()
+        expect(() => decode(text)).toThrow()
       })
     })
   })
@@ -59,10 +59,18 @@ describe('base32768', () => {
             uint8Array[i] = fillUint8
           }
 
-          const actual = base32768.decode(base32768.encode(uint8Array.buffer))
-          expectArrayBuffersEqual(uint8Array.buffer, actual)
+          expectUint8ArraysEqual(uint8Array, decode(encode(uint8Array)))
         })
       })
     }
+  })
+
+  it('demo code', () => {
+    const ascii = 'some ASCII text'
+    const uint8Array = Uint8Array.from(ascii, chr => chr.charCodeAt(0))
+    const str = encode(uint8Array)
+    const uint8Array2 = decode(str)
+    const ascii2 = String.fromCharCode(...uint8Array2)
+    expect(ascii2).toBe('some ASCII text')
   })
 })

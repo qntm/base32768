@@ -3,7 +3,7 @@
   (e.g. Windows, Java, JavaScript)
 */
 
-// Z is usually a uint15 but sometimes a uint7
+// Z is a number, usually a uint15 but sometimes a uint7
 
 const BITS_PER_CHAR = 15 // Base32768 is a 15-bit encoding
 const BITS_PER_BYTE = 8
@@ -35,12 +35,7 @@ Object.entries(lookupE).forEach(([numZBits, encodeRepertoire]) => {
   })
 })
 
-/**
-  Main Base32768 encoding method. Takes an ArrayBuffer as input and returns a
-  String as output.
-*/
-export const encode = arrayBuffer => {
-  const uint8Array = new Uint8Array(arrayBuffer)
+export const encode = uint8Array => {
   const length = uint8Array.length
 
   let str = ''
@@ -97,17 +92,13 @@ export const encode = arrayBuffer => {
   return str
 }
 
-/**
-  Main Base32768 decoding method. Note that this is step-for-step the reverse
-  of the encoding method!
-*/
 export const decode = str => {
   const length = str.length
 
   // This length is a guess. There's a chance we allocate one more byte here
   // than we actually need. But we can count and slice it off later
   const uint8Array = new Uint8Array(Math.floor(length * BITS_PER_CHAR / BITS_PER_BYTE))
-  let actualLength = 0
+  let numUint8s = 0
   let uint8 = 0
   let numUint8Bits = 0
 
@@ -132,8 +123,8 @@ export const decode = str => {
       numUint8Bits++
 
       if (numUint8Bits === BITS_PER_BYTE) {
-        uint8Array[actualLength] = uint8
-        actualLength++
+        uint8Array[numUint8s] = uint8
+        numUint8s++
         uint8 = 0
         numUint8Bits = 0
       }
@@ -147,7 +138,7 @@ export const decode = str => {
     throw new Error('Padding mismatch')
   }
 
-  return new Uint8Array(uint8Array.buffer, 0, actualLength)
+  return new Uint8Array(uint8Array.buffer, 0, numUint8s)
 }
 
 export default { encode, decode }
