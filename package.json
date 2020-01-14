@@ -1,13 +1,15 @@
 {
   "name": "base32768",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Binary-to-text encoding highly optimised for UTF-16",
   "homepage": "https://github.com/qntm/base32768",
   "repository": {
     "type": "git",
     "url": "git://github.com/qntm/base32768.git"
   },
-  "main": "index.js",
+  "module": "dist/es6/base32768.js",
+  "main": "dist/es6/base32768.js",
+  "browser": "dist/iife/base32768.js",
   "keywords": [
     "base64",
     "base32768",
@@ -15,12 +17,13 @@
     "unicode",
     "text",
     "decoding",
-    "efficiency"
+    "efficient"
   ],
   "scripts": {
     "jest": "jest",
-    "test": "standard && jest",
-    "standard": "standard"
+    "rollup": "rollup",
+    "standard": "standard",
+    "test": "standard && jest"
   },
   "dependencies": [],
   "author": "qntm",
@@ -29,9 +32,15 @@
     "@babel/preset-env": "^7.7.7",
     "glob": "^7.1.6",
     "jest": "^24.9.0",
+    "rollup": "^1.29.0",
     "standard": "^14.3.1"
   },
   "babel": {
-    "presets": ["@babel/preset-env"]
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "standard": {
+    "ignore": "dist"
   }
 }

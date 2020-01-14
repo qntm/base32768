@@ -105,18 +105,29 @@ npm install base32768
 ## Usage
 
 ```js
-import base32768 from 'base32768'
+import { encode, decode } from 'base32768'
 
 const ascii = 'some ASCII text'
 const uint8Array = Uint8Array.from(ascii, chr => chr.charCodeAt(0))
-const str = base32768.encode(uint8Array)
+const str = encode(uint8Array)
 console.log(str)
 // '怗膹䩈㭴䂊䫁輪黔'
 
-const uint8Array2 = base32768.decode(str)
+const uint8Array2 = decode(str)
 const ascii2 = String.fromCharCode(...uint8Array2)
 console.log(ascii2)
 // 'some ASCII text'
+```
+
+### In the browser
+
+Load this file in the browser to gain access to a `base32768` global.
+
+```html
+<script src="./node_modules/base32768/dist/iife/base32768.js"></script>
+<script>
+  console.log(base32768.decode('怗膹䩈㭴䂊䫁輪黔'))
+</script>
 ```
 
 ## API
