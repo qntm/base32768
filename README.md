@@ -123,28 +123,46 @@ npm install base32768
 ## Usage
 
 ```js
-const base32768 = require("base32768")
+import { encode, decode } from 'base32768'
 
 const uint8Array = new Uint8Array([104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100])
+const str = encode(uint8Array)
+console.log(str)
+// 6 code points, '媒腻㐤┖ꈳ埳'
 
-const string = base32768.encode(uint8Array.buffer); 
-console.log(string); // 6 code points, '媒腻㐤┖ꈳ埳'
+const uint8Array2 = decode(str)
+console.log(uint8Array2)
+// [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+```
 
-const uint8Array2 = new Uint8Array(base32768.decode(string));
-console.log(uint8Array2); // [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+### In the browser
+
+Load this file in the browser to gain access to a `base32768` global.
+
+```html
+<script src="./node_modules/base32768/dist/iife/base32768.js"></script>
+<script>
+  console.log(base32768.decode('怗膹䩈㭴䂊䫁輪黔'))
+</script>
 ```
 
 ## API
 
-### base32768.encode(buf)
+### base32768.encode(uint8Array)
 
-Encodes an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) and returns a Base32768 `String`, suitable for passing safely through almost any "Unicode-clean" text-handling API. This string contains no special characters and is immune to Unicode normalization. Give or take some padding characters, the output string has 1 character per 15 bits of input.
+Encodes an [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) and returns a Base32768 `String`. Note that every Node.js [`Buffer`](https://nodejs.org/docs/latest/api/buffer.html#buffer_buffers_and_typedarray) is a `Uint8Array`.
+
+The string is suitable for passing safely through almost any "Unicode-clean" text-handling API. This string contains no special characters and is immune to Unicode normalization. Give or take some padding characters, the output string has 1 character per 15 bits of input.
 
 All characters are chosen from the Basic Multilingual Plane. This means that when encoded as UTF-16, all characters occupy 16 bits. Thus, there are 16 bits of output UTF-16 text per 15 bits of input, an efficiency of 93.75%.
 
 ### base32768.decode(str)
 
-Decodes a Base32768 `String` and returns an `ArrayBuffer` containing the original binary data.
+Decodes a Base32768 `String` and returns an `Uint8Array` containing the original binary data. Note that a `Uint8Array` can be converted to a Node.js `Buffer` like so:
+
+```js
+const buffer = Buffer.from(uint8Array.buffer, uint8Array.byteOffset, uint8Array.byteLength)
+```
 
 ## License
 
