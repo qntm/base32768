@@ -8,7 +8,7 @@
     "url": "git://github.com/qntm/base32768.git"
   },
   "module": "dist/es6/base32768.js",
-  "main": "dist/es6/base32768.js",
+  "main": "dist/cjs/base32768.js",
   "browser": "dist/iife/base32768.js",
   "keywords": [
     "base64",
