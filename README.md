@@ -140,7 +140,7 @@ console.log(uint8Array2)
 Load this file in the browser to gain access to a `base32768` global.
 
 ```html
-<script src="https://unpkg.com/base32768@2.0.0/dist/iife/base32768.js" crossorigin></script>
+<script src="https://unpkg.com/base32768" crossorigin></script>
 <script>
   console.log(base32768.decode('怗膹䩈㭴䂊䫁輪黔'))
 </script>
