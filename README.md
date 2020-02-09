@@ -150,7 +150,7 @@ Load this file in the browser to gain access to a `base32768` global.
 
 ### base32768.encode(uint8Array)
 
-Encodes an [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) and returns a Base32768 `String`. Note that every Node.js [`Buffer`](https://nodejs.org/docs/latest/api/buffer.html#buffer_buffers_and_typedarray) is a `Uint8Array`.
+Encodes a [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) and returns a Base32768 `String`. Note that every Node.js [`Buffer`](https://nodejs.org/docs/latest/api/buffer.html#buffer_buffers_and_typedarray) is a `Uint8Array`.
 
 The string is suitable for passing safely through almost any "Unicode-clean" text-handling API. This string contains no special characters and is immune to Unicode normalization. Give or take some padding characters, the output string has 1 character per 15 bits of input.
 
@@ -158,7 +158,7 @@ All characters are chosen from the Basic Multilingual Plane. This means that whe
 
 ### base32768.decode(str)
 
-Decodes a Base32768 `String` and returns an `Uint8Array` containing the original binary data. Note that a `Uint8Array` can be converted to a Node.js `Buffer` like so:
+Decodes a Base32768 `String` and returns a `Uint8Array` containing the original binary data. Note that a `Uint8Array` can be converted to a Node.js `Buffer` like so:
 
 ```js
 const buffer = Buffer.from(uint8Array.buffer, uint8Array.byteOffset, uint8Array.byteLength)
