@@ -1,6 +1,6 @@
 {
   "name": "base32768",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Binary-to-text encoding highly optimised for UTF-16",
   "homepage": "https://github.com/qntm/base32768",
   "repository": {
@@ -9,7 +9,6 @@
   },
   "module": "dist/es6/base32768.js",
   "main": "dist/cjs/base32768.js",
-  "browser": "dist/iife/base32768.js",
   "keywords": [
     "base64",
     "base32768",
