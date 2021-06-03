@@ -9,6 +9,7 @@
   },
   "module": "dist/es6/base32768.js",
   "main": "dist/cjs/base32768.js",
+  "types": "typings/index.d.ts",
   "keywords": [
     "base64",
     "base32768",
@@ -21,6 +22,7 @@
   "scripts": {
     "jest": "jest",
     "rollup": "rollup",
+    "postpublish": "npm version patch && git push",
     "standard": "standard",
     "test": "standard && jest"
   },
@@ -44,6 +46,7 @@
     "ignore": "dist"
   },
   "files": [
-    "dist/**/*"
+    "dist",
+    "typings"
   ]
 }

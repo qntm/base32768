@@ -9,8 +9,8 @@ const BITS_PER_CHAR = 15 // Base32768 is a 15-bit encoding
 const BITS_PER_BYTE = 8
 
 const pairStrings = [
-  'ҠӀԀԠڀۀݠޠ߀ߠကဠႠჀᄀᅠᆀᆠᇠቀበኀዠጀጠፀᎠᏠᐠᙠᚠᛠកហᠠᡠᣀᣠᦀᦠ᧠ᨀᨠᩀᯀᯠᰀᰠᴀᴠ⇠∀⋀⋠⍀⏠␀␠─❠➀⟀⠀⦀⦠⧀⨠⩠⪀⫀⫠⭠ⰀⰠⲀⳠⴀⴠⵀⵠ⺠⻠㇀㇠㐀䶠䷀鿀ꀀꒀ꒠꓀ꔀꘀꙀꙠꚠꛠ꜀ꝠꞀꞠꡀꡠ',
-  'ƀƠɀʠ'
+  'ҠҿԀԟڀڿݠޟ߀ߟကဟႠႿᄀᅟᆀᆟᇠሿበቿዠዿጠጿᎠᏟᐠᙟᚠᛟកសᠠᡟᣀᣟᦀᦟ᧠᧿ᨠᨿᯀᯟᰀᰟᴀᴟ⇠⇿⋀⋟⍀⏟␀␟─❟➀➿⠀⥿⦠⦿⨠⩟⪀⪿⫠⭟ⰀⰟⲀⳟⴀⴟⵀⵟ⺠⻟㇀㇟㐀䶟䷀龿ꀀꑿ꒠꒿ꔀꗿꙀꙟꚠꛟ꜀ꝟꞀꞟꡀꡟ',
+  'ƀƟɀʟ'
 ]
 
 const lookupE = {}
@@ -21,7 +21,7 @@ pairStrings.forEach((pairString, r) => {
   pairString.match(/../gu).forEach(pair => {
     const first = pair.codePointAt(0)
     const last = pair.codePointAt(1)
-    for (let codePoint = first; codePoint < last; codePoint++) {
+    for (let codePoint = first; codePoint <= last; codePoint++) {
       encodeRepertoire.push(String.fromCodePoint(codePoint))
     }
   })
@@ -33,7 +33,7 @@ pairStrings.forEach((pairString, r) => {
   })
 })
 
-export const encode = uint8Array => {
+const encode = uint8Array => {
   const length = uint8Array.length
 
   let str = ''
@@ -90,7 +90,7 @@ export const encode = uint8Array => {
   return str
 }
 
-export const decode = str => {
+const decode = str => {
   const length = str.length
 
   // This length is a guess. There's a chance we allocate one more byte here
@@ -138,3 +138,5 @@ export const decode = str => {
 
   return new Uint8Array(uint8Array.buffer, 0, numUint8s)
 }
+
+export { encode, decode }
