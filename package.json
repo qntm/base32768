@@ -1,6 +1,6 @@
 {
   "name": "base32768",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Binary-to-text encoding highly optimised for UTF-16",
   "homepage": "https://github.com/qntm/base32768",
   "repository": {
