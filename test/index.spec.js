@@ -1,17 +1,14 @@
 /** Tests for Base32768, ensure strings survive round trips, etc. */
 
-/* eslint-env jest */
+/* eslint-env mocha */
 
+import assert from 'assert'
 import fs from 'fs'
 import glob from 'glob'
 
-import { encode, decode } from '../src/index'
+import { encode, decode } from '../src/index.js'
 
 const forms = ['NFC', 'NFD', 'NFKC', 'NFKD']
-
-const expectUint8ArraysEqual = (expected, actual) => {
-  expect([...expected]).toEqual([...actual])
-}
 
 describe('base32768', () => {
   describe('test data pairs', () => {
@@ -22,10 +19,10 @@ describe('base32768', () => {
       it(caseName, () => {
         const uint8Array = new Uint8Array(fs.readFileSync(caseName + '.bin'))
         const text = fs.readFileSync(caseName + '.txt', 'utf8')
-        expect(encode(uint8Array)).toBe(text)
-        expectUint8ArraysEqual(decode(text), uint8Array)
+        assert.deepStrictEqual(encode(uint8Array), text)
+        assert.deepStrictEqual(decode(text), uint8Array)
         forms.forEach(function (form) {
-          expect(text.normalize(form)).toBe(text)
+          assert.deepStrictEqual(text.normalize(form), text)
         })
       })
     })
@@ -38,7 +35,7 @@ describe('base32768', () => {
       const caseName = fileName.substring(0, fileName.length - '.txt'.length)
       it(caseName, () => {
         const text = fs.readFileSync(caseName + '.txt', 'utf8')
-        expect(() => decode(text)).toThrow()
+        assert.throws(() => decode(text))
       })
     })
   })
@@ -59,7 +56,7 @@ describe('base32768', () => {
             uint8Array[i] = fillUint8
           }
 
-          expectUint8ArraysEqual(uint8Array, decode(encode(uint8Array)))
+          assert.deepStrictEqual(uint8Array, decode(encode(uint8Array)))
         })
       })
     }
@@ -71,6 +68,6 @@ describe('base32768', () => {
     const str = encode(uint8Array)
     const uint8Array2 = decode(str)
     const ascii2 = String.fromCharCode(...uint8Array2)
-    expect(ascii2).toBe('some ASCII text')
+    assert.deepStrictEqual(ascii2, 'some ASCII text')
   })
 })
