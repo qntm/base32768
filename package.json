@@ -1,15 +1,21 @@
 {
   "name": "base32768",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "Binary-to-text encoding highly optimised for UTF-16",
   "homepage": "https://github.com/qntm/base32768",
   "repository": {
     "type": "git",
     "url": "git://github.com/qntm/base32768.git"
   },
-  "module": "dist/es6/base32768.js",
-  "main": "dist/cjs/base32768.js",
+  "type": "module",
+  "main": "src/index.js",
   "types": "typings/index.d.ts",
+  "scripts": {
+    "mocha": "c8 --100 mocha",
+    "postpublish": "npm version patch && git push",
+    "standard": "standard",
+    "test": "npm run standard && npm run mocha"
+  },
   "keywords": [
     "base64",
     "base32768",
@@ -19,34 +25,17 @@
     "decoding",
     "efficient"
   ],
-  "scripts": {
-    "jest": "jest",
-    "rollup": "rollup",
-    "postpublish": "npm version patch && git push",
-    "standard": "standard",
-    "test": "standard && jest"
-  },
-  "dependencies": [],
   "author": "qntm",
   "license": "MIT",
   "devDependencies": {
-    "@babel/preset-env": "^7.7.7",
-    "glob": "^7.1.6",
-    "jest": "^24.9.0",
-    "rollup": "^1.29.0",
+    "c8": "^7.11.3",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
     "safe-code-point": "^1.0.0",
     "standard": "^14.3.1"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
-  "standard": {
-    "ignore": "dist"
-  },
   "files": [
-    "dist",
+    "src",
     "typings"
   ]
 }
