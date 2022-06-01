@@ -31,7 +31,7 @@
     "c8": "^7.11.3",
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
-    "safe-code-point": "^3.0.0",
+    "safe-code-point": "^3.0.1",
     "standard": "^17.0.0"
   },
   "files": [
