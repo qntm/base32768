@@ -7,7 +7,10 @@
 // transplanted into `base32768` for use. It is kept here for historical reasons
 // and to ensure reproducibility.
 
-import safeCodePoint from 'safe-code-point'
+import SafeCodePoint from 'safe-code-point'
+
+// Note the use of Unicode 9.0, which was current at the time
+const safeCodePoint = await SafeCodePoint('9.0.0')
 
 const BITS_PER_CHAR = 15 // Base32768 is a 15-bit encoding
 const BITS_PER_BYTE = 8
@@ -21,7 +24,6 @@ const rangeSize = 5
 
 const safeRange = function (min, max) {
   for (let codePoint = min; codePoint < max; codePoint++) {
-    // Note the use of Unicode 9.0, which was current at the time
     if (!safeCodePoint(codePoint, '9.0')) {
       return false
     }
