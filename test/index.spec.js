@@ -4,7 +4,7 @@
 
 import assert from 'assert'
 import fs from 'fs'
-import glob from 'glob'
+import { globSync } from 'glob'
 
 import { encode, decode } from '../src/index.js'
 
@@ -29,7 +29,7 @@ describe('base32768', () => {
   })
 
   describe('failure cases', () => {
-    const badFileNames = glob.sync('./test-data/bad/**/*.txt')
+    const badFileNames = globSync('./test-data/bad/**/*.txt')
 
     badFileNames.forEach(function (fileName) {
       const caseName = fileName.substring(0, fileName.length - '.txt'.length)
