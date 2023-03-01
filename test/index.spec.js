@@ -12,7 +12,7 @@ const forms = ['NFC', 'NFD', 'NFKC', 'NFKD']
 
 describe('base32768', () => {
   describe('test data pairs', () => {
-    const binFileNames = glob.sync('./test-data/pairs/**/*.bin')
+    const binFileNames = globSync('./test-data/pairs/**/*.bin')
 
     binFileNames.forEach(function (fileName) {
       const caseName = fileName.substring(0, fileName.length - '.bin'.length)
