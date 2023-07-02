@@ -29,7 +29,7 @@
   "author": "qntm",
   "license": "MIT",
   "devDependencies": {
-    "c8": "^7.11.3",
+    "c8": "^8.0.0",
     "glob": "^10.2.2",
     "mocha": "^10.0.0",
     "safe-code-point": "^3.0.1",
