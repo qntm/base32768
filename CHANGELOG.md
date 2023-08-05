@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.x.x
+
+Support for Node.js 14 is dropped.
+
 ## 3.x.x
 
 `base32768` now ships as JavaScript ("ES6") modules, not CommonJS modules. The package has `"type": "module"`. Additionally, a separate IIFE for browser use is no longer distributed.
