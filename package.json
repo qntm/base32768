@@ -30,7 +30,7 @@
   "license": "MIT",
   "devDependencies": {
     "c8": "^10.1.2",
-    "glob": "^10.2.2",
+    "glob": "^11.0.2",
     "mocha": "^11.1.0",
     "safe-code-point": "^3.0.1",
     "standard": "^17.0.0"
