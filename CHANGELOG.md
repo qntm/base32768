@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 5.x.x
+
+Support for Node.js 16 and 18 is dropped.
+
 ## 4.x.x
 
 Support for Node.js 14 is dropped.
