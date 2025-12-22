@@ -1,9 +1,8 @@
 /** Tests for Base32768, ensure strings survive round trips, etc. */
 
-/* eslint-env mocha */
-
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
+import { describe, it } from 'node:test'
 
 import { globSync } from 'glob'
 
