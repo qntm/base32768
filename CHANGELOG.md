@@ -2,7 +2,7 @@
 
 ## 5.x.x
 
-Support for Node.js 16 and 18 is dropped.
+Support for Node.js 16, 18, 20 and 22 is dropped.
 
 ## 4.x.x
 
